@@ -9,7 +9,66 @@
       <input type="text" v-model="message">
       <div>{{message}}</div>
     </div>
+
+
+    <div id="myvue">
+      <input type="text" v-model = "msg"/>
+      <div>{{msg}}</div>
+    </div>
+
+    <div id="app-2">
+      <span v-bind:title="message">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+      </span>
+    </div>
+
+    <div id="fore">
+      <ol>
+        <li  v-for = 'item in items'>
+          {{item.text}}
+        </li>
+      </ol>
+    </div>
+
+
+    <div id="app3">
+      <p v-if = 'seen'>你看到我，你没看到我！</p>
+    </div>
+
+
+    <div id="app5">
+      <input type="text" value="{{msgss}}">
+      <button v-on:click="clickMessage">- 分隔符</button>
+    </div>
+
+
+    <div id="app6">
+      <p>{{app6message}}</p>
+      <input type="text" v-model="app6message" />
+    </div>
+
+    <div id="freeze">
+      <p>{{poo}}</p>
+
+      <button @click="poo = 'bat'">change it</button>
+      <a :href="url">跳转百度</a>
+
+      <h2>名字：{{fullname}}</h2>
+    </div>
+
+    <hr>
+    <p>这里是一个益智趣味区域</p>
+    <div id="goodforperson">
+      <p>请问一个问题：<input type="text" v-model="question"/></p>
+      <p>回答是: {{answer}}</p>
+      <img :src="imgsrc" width="200px" height="200px"/>
+    </div>
+
+    <div>这里是底部的文字信息</div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script src="vue.min.js"></script>
     <script src="app1.js"></script>
+
   </body>
 </html>

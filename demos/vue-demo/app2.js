@@ -1,7 +1,7 @@
 var myModel = {
   name: 'Ashley',
   age: 24,
-  friends: [{
+  friendes: [{
     name: 'Bob',
     age: 21
   }, {
