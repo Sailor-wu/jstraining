@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Vue Demo</title>
+  </head>
+    
+  <style>
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+        }
+  </style>
+  <body>
+      <!-- class active是否添加，取决在isActive返回true还是false -->
+      <div id="act">
+          <div v-bind:class='{ active: isActive }'>这里是div</div>
+          <!-- v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。 -->
+          <h1 v-if="awesome">Vue is awesome!</h1>
+          
+          <h1 v-else>Oh no 😢</h1>
+          <hr>
+
+
+        <div v-if="type === 'A'">
+        A
+        </div>
+        <div v-else-if="type === 'B'">
+        B
+        </div>
+        <div v-else-if="type === 'C'">
+        C
+        </div>
+        <div v-else>
+        Not A/B/C
+        </div>
+
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+        </template>
+        <button type="button" v-on:click="changetype">改变登录状态</button>
+      </div>
+
+      <!-- 列表渲染 -->
+      <div id="listxr">
+            <!-- 基本模式 in  和 of 都可以做关键字-->
+            <ul>
+               <li v-for='person in persons'>
+                   {{person.name}}----{{person.age}}
+               </li> 
+            </ul>
+            <!--  -->
+            <ul>
+                <li v-for='(person,index) of persons'>
+                    {{index}}----{{person.name}}----{{person.age}}
+                </li> 
+            </ul>
+      </div>
+
+      <!-- 表单 -->
+      <form>
+         年龄： <input v-model.number="age" type="number">
+      </form>
+        <hr>
+      <!-- 组件基础 -->
+      <div id="button-demo">
+
+            <button-counter></button-counter>
+
+            <!-- <base-checkbox v-model="lovingVue"></base-checkbox> -->
+      </div>
+
+      <!-- 插糟 -->
+      
+      <navigation-link url="/profile">
+        Your Profile
+      </navigation-link>
+      
+      <!-- 单个参数 -->
+      <!-- <div id="bolg">
+          <blog-post title="this is first"></blog-post>
+          <blog-post title="this is second"></blog-post>
+          <blog-post title="this is three"></blog-post>
+      </div> -->
+
+        <!-- 传入对象post -->
+        <div id="bolg">
+            <blog-post v-for="(post,index) in posts" 
+            v-bind:key="post.id" 
+            v-bind:post="post"></blog-post>
+
+        </div>
+   
+       <div id="bolg1" :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post v-for="(post,index) in posts" 
+            v-bind:key="post.id" 
+            v-bind:post="post"
+            v-on:enlarge-text="postFontSize += 0.1"></blog-post>
+
+        </div> 
+   
+   <!-- 过度 -->
+   <div id="demo">
+        <button v-on:click="show = !show">
+          Toggle
+        </button>
+        <transition name="fade">
+          <p v-if="show">hello</p>
+        </transition>
+      </div>
+   
+        <!-- <script src="vue.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="class_style.js"></script>
+  </body>
+  </html>
